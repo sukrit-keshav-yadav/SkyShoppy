@@ -1,0 +1,124 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/skyshoppy_bg">
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:src="@drawable/ellips"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/guidelineEclipseBottom"-->
+<!--        app:layout_constraintDimensionRatio="1:1"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"-->
+<!--        app:layout_constraintRight_toRightOf="@id/guidelineEclipseRight"-->
+<!--        app:layout_constraintTop_toTopOf="@id/guidelineEclipseTop" />-->
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/baseline_cloud_24"
+        android:fontFamily="@font/sf_pro_display"
+        android:text="@string/app_name"
+        android:textColor="@color/deep_sky_blue"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineEclipseTop"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"
+        app:layout_constraintRight_toRightOf="@id/guidelineEclipseRight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.828" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/signature"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/signature2"-->
+<!--        android:textColor="@color/dark_blue"-->
+<!--        android:textSize="22sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/guidelineEclipseBottom"-->
+<!--        app:layout_constraintHorizontal_bias="0.486"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"-->
+<!--        app:layout_constraintRight_toRightOf="@id/guidelineEclipseRight"-->
+<!--        app:layout_constraintTop_toTopOf="@id/guidelineEclipseTop"-->
+<!--        app:layout_constraintVertical_bias="0.347" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/signature2"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/signature"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/blue_violet"-->
+<!--        android:fontFamily="@font/poppins_light"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/guidelineEclipseBottom"-->
+<!--        app:layout_constraintHorizontal_bias="0.496"-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"-->
+<!--        app:layout_constraintRight_toRightOf="@id/guidelineEclipseRight"-->
+<!--        app:layout_constraintTop_toTopOf="@id/guidelineEclipseTop"-->
+<!--        app:layout_constraintVertical_bias="0.645" />-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        style="@style/blueButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"
+        app:layout_constraintRight_toRightOf="@id/guidelineEclipseRight"
+        app:layout_constraintTop_toTopOf="@id/guidelineEclipseBottom"
+        app:layout_constraintVertical_bias="0.245" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLogin"
+        style="@style/whiteButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Log In"
+        app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"
+        app:layout_constraintRight_toRightOf="@id/guidelineEclipseRight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnRegister" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEclipseLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEclipseRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.82" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEclipseTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="193dp"
+        app:layout_constraintGuide_percent="0.23" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEclipseBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.66"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

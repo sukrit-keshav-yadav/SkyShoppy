@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "357057573898",
+    "project_id": "skyshopy-f6c23",
+    "storage_bucket": "skyshopy-f6c23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357057573898:android:594a1e32f246c475015bf3",
+        "android_client_info": {
+          "package_name": "com.hyskytech.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357057573898-6l1pccb346rlq6hjigi2h9hv047fb08q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfBMmlI2xvT9a5dlnNWiVjSnAZucPah0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357057573898-6l1pccb346rlq6hjigi2h9hv047fb08q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357057573898:android:4e9ebe9a1aaf9656015bf3",
+        "android_client_info": {
+          "package_name": "com.hyskytech.skyshoppy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357057573898-6l1pccb346rlq6hjigi2h9hv047fb08q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfBMmlI2xvT9a5dlnNWiVjSnAZucPah0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357057573898-6l1pccb346rlq6hjigi2h9hv047fb08q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
