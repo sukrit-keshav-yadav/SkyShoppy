@@ -1,7 +1,8 @@
 package com.hyskytech.skyshoppy.data
 
 data class User(
-    val Name : String,
+    val FirstName : String,
+    val LastName : String,
     val Email : String,
     val imagePath : String = ""
 )
