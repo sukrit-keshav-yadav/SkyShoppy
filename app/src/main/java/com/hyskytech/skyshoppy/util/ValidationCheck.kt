@@ -19,3 +19,9 @@ fun validatePassword(password: String):RegisterValidation{
         return RegisterValidation.Failed("Password must contain 6 characters")
     return RegisterValidation.Success
 }
+
+fun validateFirstName(firstName: String):RegisterValidation{
+    if(firstName.isNullOrEmpty())
+        return RegisterValidation.Failed("First Name is mandatory")
+    return RegisterValidation.Success
+}
