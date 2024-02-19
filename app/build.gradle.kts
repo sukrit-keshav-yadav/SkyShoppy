@@ -83,4 +83,12 @@ dependencies {
     implementation ("com.google.dagger:hilt-android:2.46")
     kapt ("com.google.dagger:hilt-compiler:2.46")
 
+    val nav_version = "2.5.2"
+    implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    //BottomNavigation
+    implementation ("com.etebarian:meow-bottom-navigation:1.3.1")
+
+
 }

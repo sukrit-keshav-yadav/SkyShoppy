@@ -3,7 +3,6 @@ package com.hyskytech.skyshoppy.viewModel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 import com.hyskytech.skyshoppy.data.User
 import com.hyskytech.skyshoppy.util.Constants.USER_COLLECTION
@@ -15,7 +14,6 @@ import com.hyskytech.skyshoppy.util.validateFirstName
 import com.hyskytech.skyshoppy.util.validatePassword
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -75,12 +73,10 @@ class RegisterViewModel @Inject constructor(
             }
     }
 
-    private fun checkValidUser(user: User, password: String) :Boolean {
+    private fun checkValidUser(user: User, password: String): Boolean {
         val validateEmail = validateEmail(user.Email)
         val validatePassword = validatePassword(password)
-        val shouldRegister: Boolean =
-            validateEmail is RegisterValidation.Success && validatePassword is
-                RegisterValidation.Success
-        return shouldRegister
+        return validateEmail is RegisterValidation.Success && validatePassword is
+            RegisterValidation.Success
     }
 }

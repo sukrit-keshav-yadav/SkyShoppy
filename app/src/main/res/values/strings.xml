@@ -2,9 +2,9 @@
     <string name="app_name">SkyShoppy</string>
     <string name="signature">Welcome to \nthe new era \nof Shopping</string>
     <string name="signature2">Shop the way you want</string>
-    <string name="loginPageWelcome">Welcome Back,\nLog In to Continue</string>
+    <string name="loginPageWelcome">Welcome Back,\nPlease Log In to Continue</string>
     <string name="registerPageWelcome">Welcome,\nPlease Register to Continue</string>
     <string name="forgotPassword">Forgot Password?</string>
-    <string name="resetEmailDesc">We will send reset link to you email</string>
+    <string name="resetEmailDesc">We will send password reset link to you email</string>
 
 </resources>

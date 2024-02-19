@@ -2,6 +2,7 @@ package com.hyskytech.skyshoppy.View.Fragment.LoginRegister
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.hyskytech.skyshoppy.R
 import com.hyskytech.skyshoppy.View.Activity.ShoppingActivity
@@ -87,6 +89,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                             error= validation.email.message
                         }
                     }
+                }else{
+                    binding.EdtEmail.error=null
                 }
                 if (validation.password is RegisterValidation.Failed){
                     withContext(Dispatchers.Main){
@@ -95,6 +99,8 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                             error= validation.password.message
                         }
                     }
+                }else{
+                    binding.EdtPassword.error=null
                 }
                 if (validation.firstName is RegisterValidation.Failed){
                     withContext(Dispatchers.Main){
@@ -103,12 +109,28 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                             error= validation.firstName.message
                         }
                     }
+                }else{
+                    binding.EdtFirstName.error=null
                 }
             }
         }
 
+        sharedElementEnterTransition = ChangeBounds().apply {
+            duration=600
+        }
+        sharedElementReturnTransition = ChangeBounds().apply {
+            duration=600
+        }
+
         binding.goToLoginPage.setOnClickListener {
-            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+            val extras = FragmentNavigatorExtras(
+                binding.btnRegisterRegister to "TransButton",
+                binding.EdtEmail to "TransEmail",
+                binding.EdtPassword to "TransPassword",
+                binding.WelcomeRegister to "TransWelcome",
+                binding.optionsLL to "TransOptions"
+            )
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment,null,null,extras)
         }
     }
 }

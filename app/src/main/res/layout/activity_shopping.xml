@@ -6,20 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".View.Activity.ShoppingActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="218dp"
-        android:layout_marginBottom="424dp"
-        android:text="HomePage"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintStart_toStartOf="parent"
+    <fragment
+        android:id="@+id/bottomHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/shopping_nav_graph"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavShopping" />
+
+<!--    <meow.bottomnavigation.MeowBottomNavigation-->
+<!--        android:id="@+id/bottomNavigation"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:mbn_circleColor="#ffffff"-->
+<!--        app:mbn_backgroundBottomColor="#ffffff"-->
+<!--        app:mbn_countBackgroundColor="#ff6f00"-->
+<!--        app:mbn_countTextColor="#ffffff"-->
+<!--        app:mbn_countTypeface="fonts/SourceSansPro-Regular.ttf"-->
+<!--        app:mbn_defaultIconColor="#90a4ae"-->
+<!--        app:mbn_rippleColor="#2f424242"-->
+<!--        app:mbn_selectedIconColor="@color/dark_blue"-->
+<!--        app:mbn_shadowColor="#1f212121"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        />-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavShopping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_shopping_menu"
+        app:labelVisibilityMode="unlabeled"
+        android:background="@color/black"
+        app:circularflow_radiusInDP="50dp"
+        app:itemPaddingBottom="10dp"
+        app:itemIconTint="@drawable/bottom_nav_item_background"
+        app:itemPaddingTop="10dp"
+        app:itemRippleColor="@color/light_sky_blue"
+        android:name="androidx.navigation.fragment.navHostFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

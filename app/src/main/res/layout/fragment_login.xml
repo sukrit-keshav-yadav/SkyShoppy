@@ -14,6 +14,7 @@
         android:drawableLeft="@drawable/baseline_cloud_24"
         android:fontFamily="@font/sf_pro_display"
         android:text="@string/app_name"
+        android:transitionName="TransSkyShoppy"
         android:textColor="@color/deep_sky_blue"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -31,7 +32,8 @@
         android:fontFamily="@font/poppins_thin"
         android:gravity="bottom"
         android:text="@string/loginPageWelcome"
-        android:textSize="30sp"
+        android:transitionName="TransWelcome"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/guidelineTop"
         app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
@@ -43,10 +45,11 @@
         android:id="@+id/EdtEmail"
         style="@style/editText"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="@color/editText"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:transitionName="TransEmail"
         android:paddingLeft="10dp"
         android:textColorHint="@color/dark_blue"
         app:layout_constraintBottom_toTopOf="@+id/EdtPassword"
@@ -60,9 +63,10 @@
         android:id="@+id/EdtPassword"
         style="@style/editText"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="@color/editText"
         android:hint="Password"
+        android:transitionName="TransPassword"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:textColorHint="@color/dark_blue"
@@ -72,6 +76,7 @@
         app:layout_constraintRight_toRightOf="@id/guidelineRight"
         app:layout_constraintTop_toBottomOf="@+id/EdtEmail"
         app:layout_constraintVertical_bias="0.5" />
+
 
     <TextView
         android:id="@+id/tvforgotPassword"
@@ -83,12 +88,11 @@
         android:textSize="@dimen/h2TextSize"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guidelineBottom"
-        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintLeft_toLeftOf="@id/guidelineLeft"
         app:layout_constraintRight_toRightOf="@id/guidelineRight"
         app:layout_constraintTop_toBottomOf="@+id/EdtPassword"
         app:layout_constraintVertical_bias="0.5" />
-
 
     <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
         android:id="@+id/btnLoginLogin"
@@ -97,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Login"
+        android:transitionName="TransButton"
         app:finalCornerAngle="@dimen/buttonCorners"
         app:layout_constraintEnd_toEndOf="@id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.5"
@@ -112,19 +117,22 @@
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
         app:layout_constraintTop_toBottomOf="@+id/btnLoginLogin"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.5"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/optionsLL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:transitionName="TransOptions"
         android:foregroundGravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/goToRegisterPage"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/google"
@@ -150,7 +158,6 @@
         android:text="Don't have an Account? Register"
         android:textColor="@color/dark_blue"
         android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="@+id/guidelineLeft"

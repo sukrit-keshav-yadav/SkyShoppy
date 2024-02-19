@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.hyskytech.skyshoppy.R
 import com.hyskytech.skyshoppy.databinding.FragmentIntroBinding
@@ -31,10 +32,18 @@ class IntroductionFragment : Fragment(R.layout.fragment_intro) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnLoginInfo.setOnClickListener {
-            findNavController().navigate(R.id.action_introductionFragment_to_loginFragment)
+            val extras = FragmentNavigatorExtras(
+                binding.AppName to "TransSkyShoppy",
+                binding.btnRegisterInfo to "TransButton",
+            )
+            findNavController().navigate(R.id.action_introductionFragment_to_loginFragment,null,null,extras)
         }
         binding.btnRegisterInfo.setOnClickListener {
-            findNavController().navigate(R.id.action_introductionFragment_to_registerFragment)
+            val extras = FragmentNavigatorExtras(
+                binding.AppName to "TransSkyShoppy",
+                binding.btnRegisterInfo to "TransButton",
+            )
+            findNavController().navigate(R.id.action_introductionFragment_to_registerFragment,null,null,extras)
         }
     }
 }

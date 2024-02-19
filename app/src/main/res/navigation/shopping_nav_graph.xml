@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shopping_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.CartFragment"
+        android:label="CartFragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.HomeFragment"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.SearchFragment"
+        android:label="SearchFragment" />
+</navigation>
