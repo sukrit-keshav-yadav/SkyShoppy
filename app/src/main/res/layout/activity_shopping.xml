@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_bluish"
     tools:context=".View.Activity.ShoppingActivity">
 
     <fragment
@@ -16,7 +17,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/shopping_nav_graph"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavShopping" />
+        app:layout_constraintBottom_toTopOf="@id/CVBottomNavShopping" />
 
 <!--    <meow.bottomnavigation.MeowBottomNavigation-->
 <!--        android:id="@+id/bottomNavigation"-->
@@ -36,21 +37,33 @@
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        />-->
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavShopping"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CVBottomNavShopping"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_shopping_menu"
-        app:labelVisibilityMode="unlabeled"
-        android:background="@color/black"
-        app:circularflow_radiusInDP="50dp"
-        app:itemPaddingBottom="10dp"
-        app:itemIconTint="@drawable/bottom_nav_item_background"
-        app:itemPaddingTop="10dp"
-        app:itemRippleColor="@color/light_sky_blue"
-        android:name="androidx.navigation.fragment.navHostFragment"
+        app:cardCornerRadius="30dp"
+        android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavShopping"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:menu="@menu/bottom_nav_shopping_menu"
+            app:labelVisibilityMode="unlabeled"
+            android:background="@color/black"
+            app:circularflow_radiusInDP="50dp"
+            app:itemPaddingBottom="10dp"
+            app:itemIconTint="@drawable/bottom_nav_item_background"
+            app:itemPaddingTop="10dp"
+            app:itemRippleColor="@color/sky_blue"
+            android:name="androidx.navigation.fragment.navHostFragment"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

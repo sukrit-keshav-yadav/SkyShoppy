@@ -43,6 +43,14 @@
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/poppins_light</item>
     </style>
+
+    <style name="tab_layout_text" parent="TextAppearance.AppCompat">
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/sky_blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/sf_pro_display</item>
+    </style>
+
     <dimen name="h4TextSize">35sp</dimen>
     <dimen name="h2TextSize">17sp</dimen>
     <dimen name="h3TextSize">22sp</dimen>
