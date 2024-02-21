@@ -17,7 +17,9 @@ import com.hyskytech.skyshoppy.View.Fragment.Categories.TShirtFragment
 import com.hyskytech.skyshoppy.View.Fragment.Categories.TrouserFragment
 import com.hyskytech.skyshoppy.View.Fragment.Categories.VestsFragment
 import com.hyskytech.skyshoppy.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private lateinit var binding : FragmentHomeBinding
@@ -63,7 +65,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     tab.icon=AppCompatResources.getDrawable(requireContext(),R.drawable.ic_vest)
                 }
                 4 -> {
-                    tab.text="Cap"
+                    tab.text="Caps"
                     tab.icon=AppCompatResources.getDrawable(requireContext(),R.drawable.ic_cap)
                 }
                 5 -> {

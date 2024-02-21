@@ -13,10 +13,7 @@ class HomeViewpagerAdapter(
     override fun getItemCount(): Int {
         return fragments.size
     }
-
     override fun createFragment(position: Int): Fragment {
         return fragments[position]
     }
-
-
 }
