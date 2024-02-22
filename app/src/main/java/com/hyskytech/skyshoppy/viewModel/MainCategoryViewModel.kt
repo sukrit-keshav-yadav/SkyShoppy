@@ -19,9 +19,55 @@ class MainCategoryViewModel @Inject constructor(
     private val _hotDeals = MutableStateFlow<Resource<List<Product>>>(Resource.None())
     val hotDeals : StateFlow<Resource<List<Product>>> = _hotDeals
 
+    private val _bestProducts = MutableStateFlow<Resource<List<Product>>>(Resource.None())
+    val bestProducts : StateFlow<Resource<List<Product>>> = _bestProducts
+
+    private val _greatSavingsProducts = MutableStateFlow<Resource<List<Product>>>(Resource.None())
+    val greatSavingsProducts : StateFlow<Resource<List<Product>>> = _greatSavingsProducts
     init {
         fetchHotDealsProducts()
+        fetchBestProducts()
+        fetchGreatSavingsProducts()
     }
+
+    private fun fetchGreatSavingsProducts() {
+        viewModelScope.launch {
+            _greatSavingsProducts.emit(Resource.Loading())
+        }
+
+        firestore.collection("Products").whereEqualTo("category","Great Savings")
+            .get()
+            .addOnSuccessListener {result ->
+                val greatSavingsProductsList = result.toObjects(Product::class.java)
+                viewModelScope.launch {
+                    _greatSavingsProducts.emit(Resource.Success(greatSavingsProductsList))
+                }
+            }.addOnFailureListener{
+                viewModelScope.launch {
+                    _greatSavingsProducts.emit(Resource.Error(it.message.toString()))
+                }
+            }
+    }
+
+    private fun fetchBestProducts() {
+        viewModelScope.launch {
+            _bestProducts.emit(Resource.Loading())
+        }
+
+        firestore.collection("Products").whereEqualTo("category","Best Products")
+            .get()
+            .addOnSuccessListener {result ->
+                val bestProductlist = result.toObjects(Product::class.java)
+                viewModelScope.launch {
+                    _bestProducts.emit(Resource.Success(bestProductlist))
+                }
+            }.addOnFailureListener{
+                viewModelScope.launch {
+                    _bestProducts.emit(Resource.Error(it.message.toString()))
+                }
+            }
+    }
+
     fun fetchHotDealsProducts(){
 
         viewModelScope.launch {

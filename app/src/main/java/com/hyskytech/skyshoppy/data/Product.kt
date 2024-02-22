@@ -4,7 +4,7 @@ data class Product(
     val id: String,
     val name: String,
     val category: String,
-    val price: Float,
+    val price: Int,
     val offerPercentage: Float? = null,
     val description: String? = null,
     val colors: List<Int>? = null,
@@ -12,5 +12,5 @@ data class Product(
     val images: List<String>,
     val seller : String
 ){
-    constructor() : this("0","","","250".toFloat(),null,null,null,null,images= emptyList(),"")
+    constructor() : this("0","","",0,null,null,null,null,images= emptyList(),"")
 }

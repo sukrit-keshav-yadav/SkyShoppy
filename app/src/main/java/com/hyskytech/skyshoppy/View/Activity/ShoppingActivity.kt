@@ -6,8 +6,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.hyskytech.skyshoppy.R
 import com.hyskytech.skyshoppy.databinding.ActivityShoppingBinding
+import dagger.hilt.android.AndroidEntryPoint
 import meow.bottomnavigation.MeowBottomNavigation
 
+@AndroidEntryPoint
 class ShoppingActivity : AppCompatActivity() {
 
     val binding by lazy {
@@ -21,7 +23,5 @@ class ShoppingActivity : AppCompatActivity() {
         binding.apply {
             bottomNavShopping.setupWithNavController(navController)
         }
-
-
     }
 }

@@ -74,6 +74,7 @@
         android:layout_margin="5dp"
         android:transitionName="TransButton"
         android:text="Register"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"
@@ -89,6 +90,7 @@
         android:layout_margin="5dp"
         android:transitionName="TransButton"
         android:text="Log In"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="@id/guidelineEclipseLeft"
         app:layout_constraintRight_toRightOf="@id/guidelineEclipseRight"
         app:layout_constraintTop_toBottomOf="@id/btnRegisterInfo" />

@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     app:strokeWidth="2dp"
     app:strokeColor="@color/_light_green"
-    app:elevation="0dp">
+    app:elevation="0dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,6 +42,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_light"
                 android:text="Chair"
+                android:maxLines="2"
+                android:minLines="2"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -67,8 +70,9 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/sf_pro_display"
             android:text="$1600"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/green"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_price"
             app:layout_constraintTop_toBottomOf="@id/linear_product_name"
@@ -82,8 +86,8 @@
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/sf_pro_display"
             android:text="$1600"
-            android:textColor="@color/green"
-            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:textSize="11sp"
             android:layout_marginStart="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/img_product"

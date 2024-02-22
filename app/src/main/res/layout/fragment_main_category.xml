@@ -15,25 +15,25 @@
             android:layout_height="match_parent">
 
 
-    <ProgressBar
-        android:id="@+id/progBarHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+            <ProgressBar
+                android:id="@+id/progBarHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/CVHotDealsHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:strokeColor="@color/orange_red"
+        app:cardBackgroundColor="@color/black"
         app:strokeWidth="4dp"
-        android:backgroundTint="@color/black"
         app:cardCornerRadius="20dp"
         android:layout_margin="10dp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -68,6 +68,7 @@
         android:backgroundTint="@color/black"
         app:cardCornerRadius="20dp"
         android:layout_margin="10dp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/CVHotDealsHome">
@@ -100,6 +101,7 @@
         android:layout_height="wrap_content"
         app:strokeColor="@color/_light_green"
         app:strokeWidth="4dp"
+        android:visibility="gone"
         android:backgroundTint="@color/black"
         app:cardCornerRadius="20dp"
         android:layout_margin="10dp"

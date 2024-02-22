@@ -28,6 +28,8 @@
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="Scotch Premium"
+            android:maxLines="2"
+            android:minLines="2"
             app:layout_constraintStart_toEndOf="@id/img_ad"
             app:layout_constraintTop_toTopOf="@id/img_ad"
             android:layout_marginTop="7dp"

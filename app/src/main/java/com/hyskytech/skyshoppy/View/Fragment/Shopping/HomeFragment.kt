@@ -74,5 +74,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
         }.attach()
+
+        binding.viewPagerHome.isUserInputEnabled = false
     }
 }

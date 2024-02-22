@@ -9,20 +9,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hyskytech.skyshoppy.data.Product
-import com.hyskytech.skyshoppy.databinding.HotDealsRvItemBinding
+import com.hyskytech.skyshoppy.databinding.BestProductsRvItemBinding
+import com.hyskytech.skyshoppy.databinding.GreatSavingsRvItemBinding
 
-class HotDealsAdapter : RecyclerView.Adapter<HotDealsAdapter.HotDealsViewHolder>() {
-    inner class HotDealsViewHolder(private val binding: HotDealsRvItemBinding):RecyclerView.ViewHolder(binding.root){
+class GreatSavingsAdapter : RecyclerView.Adapter<GreatSavingsAdapter.GreatSavingsViewHolder>() {
+    inner class GreatSavingsViewHolder(private val binding: GreatSavingsRvItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(product: Product){
             binding.apply {
-                Glide.with(itemView).load(product.images[0]).into(imgBestDeal)
-                tvDealProductName.text = product.name
-                tvOldPrice.text="₹${product.price.toString()}"
+                Glide.with(itemView).load(product.images[0]).into(imgProduct)
+                tvName.text = product.name
+                tvPrice.text="₹${product.price.toString()}"
                 product.offerPercentage?.let {
                     val remainingPricePercentage = 100 - it
                     val priceAfterOffer : Int = ((remainingPricePercentage * product.price)/100).toInt()
                     tvNewPrice.text= "₹${priceAfterOffer.toString()}"
-                    tvOldPrice.paintFlags= Paint.STRIKE_THRU_TEXT_FLAG
+                    tvPrice.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                 }
                 if(product.offerPercentage==null) tvNewPrice.visibility = View.INVISIBLE
             }
@@ -42,10 +43,10 @@ class HotDealsAdapter : RecyclerView.Adapter<HotDealsAdapter.HotDealsViewHolder>
     }
 
     val differ = AsyncListDiffer(this,diffUtilCallback)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotDealsViewHolder {
-        return HotDealsViewHolder(
-            HotDealsRvItemBinding.inflate(
-                LayoutInflater.from(parent.context),parent,false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GreatSavingsViewHolder {
+        return GreatSavingsViewHolder(
+            GreatSavingsRvItemBinding.inflate(
+                LayoutInflater.from(parent.context)
             )
         )
     }
@@ -54,7 +55,7 @@ class HotDealsAdapter : RecyclerView.Adapter<HotDealsAdapter.HotDealsViewHolder>
         return differ.currentList.size
     }
 
-    override fun onBindViewHolder(holder: HotDealsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GreatSavingsViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bind(product)
     }
