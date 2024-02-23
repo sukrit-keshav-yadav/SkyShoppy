@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/transparent">
 
@@ -14,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <ProgressBar
                 android:id="@+id/progBarHome"
                 android:layout_width="wrap_content"
@@ -22,7 +22,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:indeterminateTint="@color/blue"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/CVHotDealsHome"
@@ -54,6 +55,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"/>
+
+            <ProgressBar
+                android:id="@+id/progBarHotDeals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+                android:indeterminateTint="@color/orange_red"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                />
 
         </LinearLayout>
 
@@ -128,6 +140,16 @@
                 android:layout_margin="10dp"
                 android:overScrollMode="never"/>
 
+            <ProgressBar
+                android:id="@+id/progBarGreatSavings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:indeterminateTint="@color/green"
+                android:layout_marginEnd="10dp"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"
+                />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
