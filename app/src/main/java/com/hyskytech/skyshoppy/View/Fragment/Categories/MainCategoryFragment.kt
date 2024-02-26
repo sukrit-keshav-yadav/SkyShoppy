@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -20,7 +21,6 @@ import com.hyskytech.skyshoppy.util.Resource
 import com.hyskytech.skyshoppy.viewModel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
@@ -29,7 +29,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
     private lateinit var bestProductsRvAdapter : BestProductsAdapter
     private lateinit var greatSavingsRvAdapter : GreatSavingsAdapter
 
-    private val viewmodel by viewModels<MainCategoryViewModel>()
+    private val viewModel by viewModels<MainCategoryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,14 +47,15 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         setupBestProductsRecyclerView()
         setupGreatSavingsRecyclerView()
 
-
         lifecycleScope.launchWhenStarted {
-            viewmodel.hotDeals.collectLatest {
+            viewModel.hotDeals.collectLatest {
                 when(it){
                     is Resource.Loading -> {
+                        binding.progBarHotDeals.visibility=View.VISIBLE
                         showLoading()
                     }
                     is Resource.Error -> {
+                        binding.progBarHotDeals.visibility=View.GONE
                         hideLoading()
                         Log.e("HotDeals", it.message.toString() )
                         Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
@@ -62,7 +63,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     }
                     is Resource.Success -> {
                         hotDealsRvAdapter.differ.submitList(it.data)
-                        binding.CVHotDealsHome.visibility = View.VISIBLE
+                        binding.progBarHotDeals.visibility=View.GONE
                         hideLoading()
                     }
 
@@ -72,12 +73,14 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         }
 
         lifecycleScope.launchWhenStarted {
-            viewmodel.bestProducts.collectLatest {
+            viewModel.bestProducts.collectLatest {
                 when(it){
                     is Resource.Loading -> {
+                        binding.progBarBestProducts.visibility=View.VISIBLE
                         showLoading()
                     }
                     is Resource.Error -> {
+                        binding.progBarBestProducts.visibility=View.GONE
                         hideLoading()
                         Log.e("BestProducts", it.message.toString() )
                         Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
@@ -85,7 +88,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     }
                     is Resource.Success -> {
                         bestProductsRvAdapter.differ.submitList(it.data)
-                        binding.CVBestProductsHome.visibility = View.VISIBLE
+                        binding.progBarBestProducts.visibility=View.GONE
                         hideLoading()
                     }
 
@@ -95,12 +98,14 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         }
 
         lifecycleScope.launchWhenStarted {
-            viewmodel.greatSavingsProducts.collectLatest {
+            viewModel.greatSavingsProducts.collectLatest {
                 when(it){
                     is Resource.Loading -> {
+                        binding.progBarGreatSavings.visibility=View.VISIBLE
                         showLoading()
                     }
                     is Resource.Error -> {
+                        binding.progBarGreatSavings.visibility=View.GONE
                         hideLoading()
                         Log.e("greatSavingsProducts", it.message.toString() )
                         Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
@@ -108,7 +113,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                     }
                     is Resource.Success -> {
                         greatSavingsRvAdapter.differ.submitList(it.data)
-                        binding.CVGreatSavingsHome.visibility = View.VISIBLE
+                        binding.progBarGreatSavings.visibility=View.GONE
                         hideLoading()
                     }
 
@@ -117,7 +122,17 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
             }
         }
 
+        binding.NestedScrollMainCat.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener{v, scrollX, scrollY, _, _ ->
+            if (v.getChildAt(0).bottom <= v.height + scrollY){
+                viewModel.fetchGreatSavingsProducts()
+            }
+            if (v.getChildAt(0).right <= (scrollX - v.width)){
+                viewModel.fetchHotDealsProducts()
+                viewModel.fetchBestProducts()
+            }
+        })
     }
+
 
 
     private fun setupGreatSavingsRecyclerView() {
@@ -150,7 +165,7 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         hotDealsRvAdapter = HotDealsAdapter()
 
         binding.RVHotDealsHome.apply {
-            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+            layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
             adapter= hotDealsRvAdapter
         }
     }
