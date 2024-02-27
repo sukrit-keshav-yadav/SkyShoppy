@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.FirebaseFirestore
 import com.hyskytech.skyshoppy.data.Product
+import com.hyskytech.skyshoppy.util.Constants
+import com.hyskytech.skyshoppy.util.Constants.PRODUCTS_CATEGORY
 import com.hyskytech.skyshoppy.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,8 +40,8 @@ class MainCategoryViewModel @Inject constructor(
             viewModelScope.launch {
                 _greatSavingsProducts.emit(Resource.Loading())
             }
-            firestore.collection("Products").limit(pagingInfo.greatSavingsPage*10)
-                .whereEqualTo("category", "Great Savings")
+            firestore.collection("Products").limit(pagingInfo.greatSavingsPage * 10)
+                .whereEqualTo(PRODUCTS_CATEGORY, "Great Savings")
                 .get()
                 .addOnSuccessListener { result ->
                     val greatSavingsProductsList = result.toObjects(Product::class.java)
@@ -63,9 +65,9 @@ class MainCategoryViewModel @Inject constructor(
                 _bestProducts.emit(Resource.Loading())
             }
 
-            firestore.collection("Products")
-//                .limit(pagingInfo.bestProductsPage)
-                .whereEqualTo("category", "Best Products")
+            firestore.collection(Constants.PRODUCTS_COLLECTION)
+                .limit(pagingInfo.bestProductsPage * 10)
+                .whereEqualTo(PRODUCTS_CATEGORY, "Best Products")
                 .get()
                 .addOnSuccessListener { result ->
                     val bestProductlist = result.toObjects(Product::class.java)
@@ -89,13 +91,13 @@ class MainCategoryViewModel @Inject constructor(
                 _hotDeals.emit(Resource.Loading())
             }
 
-            firestore.collection("Products")
-//                .limit(pagingInfo.hotDealsPage)
-                .whereEqualTo("category", "Hot Deals")
+            firestore.collection(Constants.PRODUCTS_COLLECTION)
+                .limit(pagingInfo.hotDealsPage * 10)
+                .whereEqualTo(PRODUCTS_CATEGORY, "Hot Deals")
                 .get()
                 .addOnSuccessListener { result ->
                     val hotDealsProductlist = result.toObjects(Product::class.java)
-                    pagingInfo.isHDPageEnd= hotDealsProductlist==pagingInfo.oldHotDeals
+                    pagingInfo.isHDPageEnd = hotDealsProductlist == pagingInfo.oldHotDeals
                     pagingInfo.oldHotDeals = hotDealsProductlist
                     viewModelScope.launch {
                         _hotDeals.emit(Resource.Success(hotDealsProductlist))
@@ -108,7 +110,6 @@ class MainCategoryViewModel @Inject constructor(
                 }
         }
     }
-
 }
 
 internal data class PagingInfo(

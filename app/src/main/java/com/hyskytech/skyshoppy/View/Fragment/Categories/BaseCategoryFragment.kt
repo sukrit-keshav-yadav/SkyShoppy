@@ -1,34 +1,31 @@
 package com.hyskytech.skyshoppy.View.Fragment.Categories
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.hyskytech.skyshoppy.Adapter.BestProductsAdapter
 import com.hyskytech.skyshoppy.Adapter.GreatSavingsAdapter
-import com.hyskytech.skyshoppy.Adapter.HotDealsAdapter
 import com.hyskytech.skyshoppy.R
 import com.hyskytech.skyshoppy.databinding.FragmentBaseCategoryBinding
-import com.hyskytech.skyshoppy.databinding.FragmentMainCategoryBinding
 import com.hyskytech.skyshoppy.util.Resource
 import com.hyskytech.skyshoppy.viewModel.BaseCategoryViewModel
-import com.hyskytech.skyshoppy.viewModel.MainCategoryViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-
+import kotlinx.coroutines.launch
+@AndroidEntryPoint
 open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
-    private lateinit var binding : FragmentBaseCategoryBinding
-    protected   val bestProductsRvAdapter : BestProductsAdapter by lazy { BestProductsAdapter() }
-    protected  val greatSavingsRvAdapter : GreatSavingsAdapter by lazy { GreatSavingsAdapter() }
+    private lateinit var binding: FragmentBaseCategoryBinding
+    protected val categoryProductsRvAdapter: GreatSavingsAdapter by lazy { GreatSavingsAdapter() }
+    protected val maxSavingsRvAdapter: BestProductsAdapter by lazy { BestProductsAdapter() }
 
-    private val viewModel by viewModels<BaseCategoryViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,36 +39,71 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupPremiumProductsRecyclerView()
-        setupGreatSavingsRecyclerView()
+        setupCategoryProductsRecyclerView()
+        setupMaxSavingsRecyclerView()
+
+        binding.baseCategoryMaxSavingProductsRV.addOnScrollListener(object :
+            RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                if (!recyclerView.canScrollVertically(1) && dx != 0) {
+                    onMaxSavingPagingRequest()
+                }
+            }
+        })
+
+        binding.nestedScrollviewBaseCategory.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (v.getChildAt(0).bottom <= v.height + scrollY) {
+                onCategoryProductsPagingRequest()
+            }
+        })
+
+    }
+
+    open fun onMaxSavingPagingRequest() {
+
+    }
+
+    open fun onCategoryProductsPagingRequest() {
 
     }
 
 
+    private fun setupMaxSavingsRecyclerView() {
 
-    private fun setupGreatSavingsRecyclerView() {
-
-        binding.baseCategoryGreatSavingsRV.apply {
-            layoutManager = GridLayoutManager(requireContext(),2, GridLayoutManager.VERTICAL,false)
-            adapter= greatSavingsRvAdapter
+        binding.baseCategoryMaxSavingProductsRV.apply {
+            layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.HORIZONTAL, false
+            )
+            adapter = maxSavingsRvAdapter
         }
     }
 
-    private fun setupPremiumProductsRecyclerView() {
+    private fun setupCategoryProductsRecyclerView() {
 
-        binding.baseCategoryBestProductsRV.apply {
-            layoutManager = LinearLayoutManager(requireContext(),
-                LinearLayoutManager.HORIZONTAL,false)
-            adapter= bestProductsRvAdapter
+        binding.baseCategoryProductsRV.apply {
+            layoutManager =
+                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+            adapter = categoryProductsRvAdapter
         }
     }
 
-    private fun hideLoading() {
-        binding.progBaseCategory.visibility = View.GONE
+    fun hideMaxSavingLoading() {
+        binding.progBaseCategoryMaxSavings.visibility = View.GONE
     }
 
-    private fun showLoading() {
-        binding.progBaseCategory.visibility = View.VISIBLE
+    fun showMaxSavingLoading() {
+        binding.progBaseCategoryMaxSavings.visibility = View.VISIBLE
+    }
+
+    fun hideCategoryProductsLoading() {
+        binding.progBaseCategoryProducts.visibility = View.GONE
+    }
+
+    fun showCategoryProductsLoading() {
+        binding.progBaseCategoryProducts.visibility = View.VISIBLE
     }
 
 }

@@ -1,6 +1,8 @@
 package com.hyskytech.skyshoppy.Adapter
 
+import android.graphics.Paint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -16,8 +18,13 @@ class BestProductsAdapter : RecyclerView.Adapter<BestProductsAdapter.BestProduct
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imgAd)
                 tvAdName.text = product.name
-                tvAdPrice.text="₹${product.price.toString()}"
-//                tvOldPrice.text="${product.offerPercentage.toString()}% off"
+//                tvAdPrice.text="₹${product.price.toString()}"
+                product.offerPercentage?.let {
+                    val remainingPricePercentage = 100 - it
+                    val priceAfterOffer : Int = ((remainingPricePercentage * product.price)/100).toInt()
+                    tvAdPrice.text= "₹${priceAfterOffer.toString()}"
+                }
+//                if(product.offerPercentage==null) tvNewPrice.visibility = View.INVISIBLE
             }
         }
     }
