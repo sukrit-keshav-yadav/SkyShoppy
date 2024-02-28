@@ -3,16 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
-    app:strokeColor="@color/orange_red"
-    app:strokeWidth="2dp"
+    app:cardBackgroundColor="@color/dodger_blue"
     app:cardUseCompatPadding="true"
     android:layout_marginBottom="10dp"
     android:elevation="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:background="@drawable/gradient_bluish">
+        android:layout_height="88dp">
 
         <ImageView
             android:id="@+id/img_best_deal"
@@ -37,7 +35,7 @@
             android:fontFamily="@font/poppins_light"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="9sp"/>
+            android:textSize="11sp"/>
 
         <TextView
             android:id="@+id/tv_old_price"
@@ -47,7 +45,7 @@
             android:layout_marginTop="3dp"
             app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
             app:layout_constraintStart_toEndOf="@id/tv_new_price"
-            android:textColor="@color/light_sea_green"
+            android:textColor="#232323"
             android:textSize="11sp"
             android:fontFamily="@font/sf_pro_display"
             android:layout_marginStart="8dp"
@@ -60,8 +58,7 @@
             android:text="$1600"
             app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
             app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name"
-
-            android:textColor="@color/orange_red"
+            android:textColor="@color/black"
             android:textSize="15sp"
             android:fontFamily="@font/sf_pro_display"/>
 

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dodger_blue">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/CVImages"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            app:cardUseCompatPadding="true"
+            android:layout_margin="10dp"
+            app:cardElevation="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerProductsInfo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/closeIV"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_close"
+            app:tint="@color/black"
+            android:background="@android:color/transparent"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="@id/CVImages"
+            app:layout_constraintTop_toTopOf="@id/CVImages"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/LLPriceName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/CVImages">
+
+        <TextView
+            android:id="@+id/TVPNameProductInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="WWE TShirt"
+            android:textSize="25sp"
+            android:paddingStart="5dp"
+            android:maxLines="2"
+            style="@style/name_text"
+            android:layout_weight="2"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/TVpriceProductInfo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="₹ 2000"
+            android:textSize="26sp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            style="@style/price_text"
+            android:layout_weight="1"
+            android:gravity="end" />
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/TVDescriptionPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Description"
+            android:paddingStart="5dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/line2"
+            app:layout_constraintEnd_toEndOf="@id/line2"
+            app:layout_constraintTop_toBottomOf="@id/line2"
+            style="@style/name_text"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/light_grey"
+            app:layout_constraintTop_toBottomOf="@id/LLPriceName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/LLColorSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toBottomOf="@id/line1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/TVColorsPI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Colors"
+                    android:textColor="#232323"
+                    android:textSize="22sp"
+                    android:paddingStart="5dp"
+                    android:fontFamily="@font/poppins_thin"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVColorsPI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/TVSizePI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sizes"
+                    android:textColor="#232323"
+                    android:textSize="22sp"
+                    android:paddingStart="5dp"
+                    android:fontFamily="@font/poppins_thin"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RVSizePI"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/light_grey"
+            app:layout_constraintTop_toBottomOf="@id/LLColorSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/TVSellerPI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sold By Sukrit Yadav"
+            android:paddingStart="5dp"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="@id/TVDescriptionPI"
+            app:layout_constraintEnd_toEndOf="@id/TVDescriptionPI"
+            app:layout_constraintTop_toBottomOf="@id/TVDescriptionPI"
+            style="@style/name_text"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/btnLoginLogin"
+            style="@style/blueButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Add To Cart"
+            android:transitionName="TransButton"
+            app:finalCornerAngle="@dimen/buttonCorners"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

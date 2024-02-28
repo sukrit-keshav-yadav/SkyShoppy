@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hyskytech.skyshoppy.Adapter.BestProductsAdapter
 import com.hyskytech.skyshoppy.Adapter.GreatSavingsAdapter
+import com.hyskytech.skyshoppy.Adapter.HotDealsAdapter
 import com.hyskytech.skyshoppy.R
 import com.hyskytech.skyshoppy.databinding.FragmentBaseCategoryBinding
 import com.hyskytech.skyshoppy.util.Resource
@@ -24,7 +25,7 @@ import kotlinx.coroutines.launch
 open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
     private lateinit var binding: FragmentBaseCategoryBinding
     protected val categoryProductsRvAdapter: GreatSavingsAdapter by lazy { GreatSavingsAdapter() }
-    protected val maxSavingsRvAdapter: BestProductsAdapter by lazy { BestProductsAdapter() }
+    protected val maxSavingsRvAdapter: HotDealsAdapter by lazy { HotDealsAdapter() }
 
 
     override fun onCreateView(
