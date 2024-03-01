@@ -10,6 +10,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ import com.hyskytech.skyshoppy.Adapter.HotDealsAdapter
 import com.hyskytech.skyshoppy.R
 import com.hyskytech.skyshoppy.databinding.FragmentMainCategoryBinding
 import com.hyskytech.skyshoppy.util.Resource
+import com.hyskytech.skyshoppy.util.ShowBottomNav
 import com.hyskytech.skyshoppy.viewModel.MainCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -47,6 +49,21 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
         setupHotDealsRecyclerView()
         setupBestProductsRecyclerView()
         setupGreatSavingsRecyclerView()
+
+        hotDealsRvAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("product",it) }
+            findNavController().navigate(R.id.action_homeFragment_to_fragmentProductInfo,b)
+        }
+
+        bestProductsRvAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("product",it) }
+            findNavController().navigate(R.id.action_homeFragment_to_fragmentProductInfo,b)
+        }
+
+        greatSavingsRvAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("product",it) }
+            findNavController().navigate(R.id.action_homeFragment_to_fragmentProductInfo,b)
+        }
 
         lifecycleScope.launchWhenStarted {
             viewModel.hotDeals.collectLatest {
@@ -195,5 +212,10 @@ class MainCategoryFragment : Fragment(R.layout.fragment_main_category) {
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = hotDealsRvAdapter
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        ShowBottomNav()
     }
 }

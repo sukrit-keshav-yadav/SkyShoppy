@@ -7,11 +7,27 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.CartFragment"
-        android:label="CartFragment" />
+        android:label="CartFragment" >
+        <action
+            android:id="@+id/action_cartFragment_to_fragmentProductInfo"
+            app:destination="@id/fragmentProductInfo"
+            app:enterAnim="@anim/slide_up_anim"
+            app:exitAnim="@anim/slide_down_anim"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentProductInfo"
+            app:destination="@id/fragmentProductInfo"
+            app:enterAnim="@anim/slide_up_anim"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@anim/slide_down_anim" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.ProfileFragment"
@@ -19,5 +35,21 @@
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.hyskytech.skyshoppy.View.Fragment.Shopping.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_fragmentProductInfo"
+            app:destination="@id/fragmentProductInfo"
+            app:enterAnim="@anim/slide_up_anim"
+            app:exitAnim="@anim/slide_down_anim"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProductInfo"
+        android:name="com.hyskytech.skyshoppy.View.Fragment.ProductInfo.FragmentProductInfo"
+        android:label="FragmentProductInfo">
+        <argument
+            android:name="product"
+            app:argType="com.hyskytech.skyshoppy.data.Product" />
+    </fragment>
 </navigation>

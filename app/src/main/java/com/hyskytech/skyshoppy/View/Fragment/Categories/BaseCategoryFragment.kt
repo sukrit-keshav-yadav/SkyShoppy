@@ -8,6 +8,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ import com.hyskytech.skyshoppy.Adapter.HotDealsAdapter
 import com.hyskytech.skyshoppy.R
 import com.hyskytech.skyshoppy.databinding.FragmentBaseCategoryBinding
 import com.hyskytech.skyshoppy.util.Resource
+import com.hyskytech.skyshoppy.util.ShowBottomNav
 import com.hyskytech.skyshoppy.viewModel.BaseCategoryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -42,6 +44,15 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
 
         setupCategoryProductsRecyclerView()
         setupMaxSavingsRecyclerView()
+
+        categoryProductsRvAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("product",it) }
+            findNavController().navigate(R.id.action_homeFragment_to_fragmentProductInfo,b)
+        }
+        maxSavingsRvAdapter.onClick ={
+            val b = Bundle().apply { putParcelable("product",it) }
+            findNavController().navigate(R.id.action_homeFragment_to_fragmentProductInfo,b)
+        }
 
         binding.baseCategoryMaxSavingProductsRV.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
@@ -107,4 +118,8 @@ open class BaseCategoryFragment : Fragment(R.layout.fragment_base_category) {
         binding.progBaseCategoryProducts.visibility = View.VISIBLE
     }
 
+    override fun onResume() {
+        super.onResume()
+        ShowBottomNav()
+    }
 }

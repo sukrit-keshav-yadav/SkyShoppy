@@ -3,8 +3,10 @@ package com.hyskytech.skyshoppy.di
 import android.app.Application
 import android.content.Context.MODE_PRIVATE
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.hyskytech.skyshoppy.firebase.FirebaseCommon
 import com.hyskytech.skyshoppy.util.Constants.LOGIN_SP
 import dagger.Module
 import dagger.Provides
@@ -28,4 +30,11 @@ object AppModule {
     fun provideLoginSharedPref(
         application: Application
     ) = application.getSharedPreferences(LOGIN_SP, MODE_PRIVATE)
+
+    @Provides
+    @Singleton
+    fun provideFirebaseCommon(
+        firebaseAuth: FirebaseAuth,
+        firestore: FirebaseFirestore
+    ) = FirebaseCommon(firestore, firebaseAuth)
 }

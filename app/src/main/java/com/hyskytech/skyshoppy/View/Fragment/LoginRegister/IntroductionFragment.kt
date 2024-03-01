@@ -21,6 +21,7 @@ import com.hyskytech.skyshoppy.viewModel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class IntroductionFragment : Fragment(R.layout.fragment_intro) {
@@ -71,6 +72,27 @@ class IntroductionFragment : Fragment(R.layout.fragment_intro) {
                 binding.btnRegisterInfo to "TransButton",
             )
             findNavController().navigate(R.id.action_introductionFragment_to_registerFragment,null,null,extras)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        lifecycleScope.launch {
+            viewModel.navigate.collect{
+                when(it){
+                    SHOPPING_ACTIVITY -> {
+                        delay(1500)
+                        Intent(requireContext(), ShoppingActivity::class.java).also { intent ->
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(intent)
+                        }
+                    }
+                    CURRENT_PAGE ->{
+                        binding.btnLoginInfo.visibility=View.VISIBLE
+                        binding.btnRegisterInfo.visibility=View.VISIBLE
+                    }
+                }
+            }
         }
     }
 }

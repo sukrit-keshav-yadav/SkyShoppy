@@ -4,14 +4,12 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="0dp"
-    app:strokeWidth="2dp"
-    app:strokeColor="@color/sky_blue"
+    app:cardBackgroundColor="@color/dodger_blue"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gradient_bluish">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/img_ad"
@@ -32,7 +30,6 @@
             android:minLines="2"
             app:layout_constraintStart_toEndOf="@id/img_ad"
             app:layout_constraintTop_toTopOf="@id/img_ad"
-            android:layout_marginTop="7dp"
             android:layout_marginStart="18dp"
             android:fontFamily="@font/poppins_thin"
             android:textStyle="bold"
@@ -43,10 +40,11 @@
             android:id="@+id/tv_ad_price"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="$1600"
+            android:text="₹ 1600"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/tv_ad_name"
             app:layout_constraintTop_toBottomOf="@id/tv_ad_name"
-            android:textColor="@color/blue_violet"
+            android:textColor="@color/black"
             android:textSize="12sp"
             android:fontFamily="@font/sf_pro_display"/>
 
@@ -71,6 +69,7 @@
         <LinearLayout
             android:layout_width="23dp"
             android:layout_height="23dp"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:orientation="vertical">
@@ -79,7 +78,7 @@
                 android:layout_height="10dp"
                 android:src="@drawable/ic_favorite"
                 android:layout_gravity="center"
-                app:tint="@color/royal_blue"
+                android:scaleType="fitXY"
                 android:layout_marginTop="7dp"
                 />
         </LinearLayout>
